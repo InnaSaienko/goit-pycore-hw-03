@@ -28,6 +28,6 @@ def normalize_phone(phone_num):
 
 
 data_of_formatted_numbers = [normalize_phone(phone_num) for phone_num in raw_numbers]
-print("Нормалізовані номери телефонів для SMS-розсилки:", data_of_formatted_numbers)
+print("Normalized phone numbers for sending SMS: ", data_of_formatted_numbers)
 
 
