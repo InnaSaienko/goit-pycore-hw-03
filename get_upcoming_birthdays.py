@@ -32,4 +32,4 @@ def get_upcoming_birthdays(users_file):
 
 users_file = 'users_data.json'
 birthdays = get_upcoming_birthdays(users_file)
-print("Список привітань на цьому тижні:", birthdays)
+print("List of greetings on this week:", birthdays)
