@@ -19,17 +19,20 @@ def get_upcoming_birthdays(users_file):
 
         if 0 > diff_days <= 7:
             celebrating_day = user_birthday_this_year
-            if celebrating_day.weekday() == 5:
+            weekday = celebrating_day.weekday()
+
+            if weekday == 5:
                 celebrating_day += timedelta(2)
-            elif celebrating_day.weekday() == 6:
+            elif weekday == 6:
                 celebrating_day += timedelta(1)
+
             upcoming_birthdays.append({
                 "name": user["name"],
                 "congratulation_date": celebrating_day.strftime("%Y.%m%d")
             })
+
     return upcoming_birthdays
 
 
-users_file = 'users_data.json'
-birthdays = get_upcoming_birthdays(users_file)
+birthdays = get_upcoming_birthdays('users_data.json')
 print("List of greetings on this week:", birthdays)
