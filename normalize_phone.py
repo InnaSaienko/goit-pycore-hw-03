@@ -12,22 +12,22 @@ raw_numbers = [
     "38050 111 22 11   ",
 ]
 
-def normalize_phone(phone_num):
-    formatted_phone_number = re.sub(r"[^\d+]", "", phone_num)
 
-    if not formatted_phone_number.startswith("+"):
-        if formatted_phone_number.startswith("380"):
-            formatted_phone_number = "+" + formatted_phone_number
-        elif formatted_phone_number.startswith("80"):
-            formatted_phone_number = "+3" + formatted_phone_number
-        else:
-            formatted_phone_number = "+38" + formatted_phone_number
+def normalize_phone(phone_number):
+    formatted_phone_number = re.sub(r"[^\d+]", "", phone_number)
+
+    if len(formatted_phone_number) != 0 and formatted_phone_number[0] != "+":
+        prefix = ""
+
+        if formatted_phone_number.startswith("80"):
+            prefix = "3"
+        elif formatted_phone_number.startswith("0"):
+            prefix = "38"
+
+        formatted_phone_number = f"+{prefix}formatted_phone_number"
 
     return formatted_phone_number
 
 
-
-data_of_formatted_numbers = [normalize_phone(phone_num) for phone_num in raw_numbers]
-print("Normalized phone numbers for sending SMS: ", data_of_formatted_numbers)
-
-
+data_formatted_numbers = tuple(normalize_phone(phone_num) for phone_num in raw_numbers)
+print("Normalized phone numbers for sending SMS: ", data_formatted_numbers)
